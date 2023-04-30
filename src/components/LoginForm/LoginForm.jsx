@@ -12,7 +12,7 @@ const LoginForm = () => {
           name="email"
           id=""
           placeholder="username or email"
-          className="border-b outline-none w-full px-2 py-3 placeholder-gray-900 font-medium "
+          className="formInput"
         />{" "}
         <br />
         <input
@@ -20,7 +20,7 @@ const LoginForm = () => {
           name="password"
           id=""
           placeholder="password"
-          className="border-b outline-none w-full px-2 py-3 placeholder-gray-900 font-medium "
+          className="formInput"
         />
         <div className="flex justify-between">
           <div>
@@ -36,7 +36,7 @@ const LoginForm = () => {
         />
         <p className="text-center">
           Don't have an account?{" "}
-          <Link className="text-primary" to={"/register"}>
+          <Link className="text-primary" to={"/user/register"}>
             Create an account
           </Link>
         </p>

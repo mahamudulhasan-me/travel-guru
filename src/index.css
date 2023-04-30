@@ -9,9 +9,12 @@ body {
 label {
   @apply text-gray-800 text-lg;
 }
-input[type="text"] {
+.bookingInput {
   @apply bg-[#F2F2F2] w-full outline-none text-black font-semibold h-12 px-4 text-2xl py-5;
 }
-input[type="date"] {
+.bookingInputDate {
   @apply bg-[#F2F2F2] w-full outline-none text-black font-semibold px-3 h-12 py-4;
+}
+.formInput {
+  @apply border-b outline-none w-full px-1 py-2 placeholder-gray-900 font-medium;
 }

@@ -5,39 +5,58 @@ import google from "../../assets/icons/google.png";
 const RegisterForm = () => {
   return (
     <div className=" w-2/5 mx-auto flex justify-center items-center  flex-col my-10">
-      <form className="w-full border py-8 px-10 space-y-5 text-black ">
-        <p className="text-xl font-semibold">Login</p>
+      <form className="w-full border py-8 px-10 space-y-3 text-black ">
+        <p className="text-xl font-semibold">Create an account</p>
+        <input
+          type="text"
+          name="firstName"
+          id=""
+          placeholder="First Name"
+          className="formInput"
+        />
+        <input
+          type="text"
+          name="lastName"
+          id=""
+          placeholder="Last Name"
+          className="formInput"
+        />
         <input
           type="email"
           name="email"
           id=""
           placeholder="username or email"
-          className="border-b outline-none w-full px-2 py-3 placeholder-gray-900 font-medium "
-        />{" "}
+          className="formInput"
+        />
         <br />
         <input
           type="password"
           name="password"
           id=""
           placeholder="password"
-          className="border-b outline-none w-full px-2 py-3 placeholder-gray-900 font-medium "
+          className="formInput"
         />
-        <div className="flex justify-between">
-          <div>
-            <input type="checkbox" name="" id="" />
-            <label htmlFor=""> Remember me</label>
-          </div>
-          <Link className="text-primary">Forgat Password?</Link>
-        </div>
+        <input
+          type="password"
+          name="confirmPassword"
+          id=""
+          placeholder="confirm password"
+          className="formInput"
+        />
+
         <input
           type="submit"
           value="Login"
           className="text-center w-full font-semibold py-3  bg-primary"
         />
+        <div className="flex gap-2">
+          <input type="checkbox" name="" id="" />
+          <p>Show Password</p>
+        </div>
         <p className="text-center">
-          Don't have an account?{" "}
-          <Link className="text-primary" to={"/register"}>
-            Create an account
+          Already have an account?{" "}
+          <Link className="text-primary" to={"/user/login"}>
+            Login
           </Link>
         </p>
       </form>

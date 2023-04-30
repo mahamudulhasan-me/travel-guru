@@ -18,21 +18,21 @@ const Booking = () => {
           <div>
             <label htmlFor="">Origin</label>
             <br />
-            <input type="text" name="origin" id="" />
+            <input type="text" name="origin" id="" className="bookingInput" />
           </div>
           <div>
             <label htmlFor="">Destination</label>
             <br />
-            <input type="text" name="origin" id="" />
+            <input type="text" name="origin" id="" className="bookingInput" />
           </div>
           <div className="flex gap-2">
             <div>
               <label htmlFor="">From</label> <br />
-              <input type="date" name="" id="" />
+              <input type="date" name="" id="" className="bookingInputDate" />
             </div>
             <div>
               <label htmlFor="">To</label> <br />
-              <input type="date" name="" id="" />
+              <input type="date" name="" id="" className="bookingInputDate" />
             </div>
           </div>
           <div>

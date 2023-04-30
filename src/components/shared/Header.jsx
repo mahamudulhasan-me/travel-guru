@@ -70,7 +70,7 @@ const Header = (props) => {
       </div>
       <div className="navbar-end">
         <Link
-          to={"/login"}
+          to={"/user/login"}
           className=" bg-primary w-28 py-3 rounded-md text-center font-medium "
         >
           Login

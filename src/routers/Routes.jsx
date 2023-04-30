@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import BannerWithSlider from "../components/Banner/BannerWithSlider";
 import Booking from "../components/Booking/Booking";
+import LoginForm from "../components/LoginForm/LoginForm";
+import RegisterForm from "../components/RegisterForm/RegisterForm";
 import Login from "../layouts/Login";
 import Main from "../layouts/Main";
 const router = createBrowserRouter([
@@ -22,8 +24,18 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "login",
+    path: "user",
     element: <Login />,
+    children: [
+      {
+        path: "login",
+        element: <LoginForm />,
+      },
+      {
+        path: "register",
+        element: <RegisterForm />,
+      },
+    ],
   },
 ]);
 

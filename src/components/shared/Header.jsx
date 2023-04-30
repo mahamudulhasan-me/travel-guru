@@ -69,9 +69,12 @@ const Header = (props) => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className=" bg-primary w-28 py-3 rounded-md text-center font-medium ">
+        <Link
+          to={"/login"}
+          className=" bg-primary w-28 py-3 rounded-md text-center font-medium "
+        >
           Login
-        </a>
+        </Link>
       </div>
     </div>
   );

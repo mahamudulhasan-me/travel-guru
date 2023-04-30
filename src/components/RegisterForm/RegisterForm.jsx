@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import facebook from "../../assets/icons/facebook.png";
 import google from "../../assets/icons/google.png";
-const LoginForm = () => {
+const RegisterForm = () => {
   return (
     <div className=" w-2/5 mx-auto flex justify-center items-center  flex-col my-10">
       <form className="w-full border py-8 px-10 space-y-5 text-black ">
@@ -63,4 +63,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

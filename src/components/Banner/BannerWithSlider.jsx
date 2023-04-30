@@ -22,10 +22,14 @@ const BannerWithSlider = () => {
     <div>
       <div className="grid grid-cols-12 items-center  mt-14 pl-[10%] gap-5 text-white">
         <div className="col-span-4">
-          <Slider asNavFor={nav1} ref={(slider) => setNav1(slider)}>
+          <Slider
+            asNavFor={nav1}
+            ref={(slider) => setNav1(slider)}
+            autoplay={true}
+          >
             {placeName.map((place) => (
               <>
-                <div>
+                <div className="pl-1">
                   <h1 className="text-5xl font-semibold uppercase">
                     {place.name}
                   </h1>
@@ -58,6 +62,7 @@ const BannerWithSlider = () => {
             slidesToShow={3}
             swipeToSlide={true}
             focusOnSelect={true}
+            autoplay={true}
             className="secondSlide"
           >
             {placeName.map((place) => (

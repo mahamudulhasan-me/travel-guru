@@ -6,3 +6,12 @@
 body {
   font-family: "Montserrat", sans-serif;
 }
+label {
+  @apply text-gray-800 text-lg;
+}
+input[type="text"] {
+  @apply bg-[#F2F2F2] w-full outline-none text-black font-semibold h-12 px-4 text-2xl py-5;
+}
+input[type="date"] {
+  @apply bg-[#F2F2F2] w-full outline-none text-black font-semibold px-3 h-12 py-4;
+}

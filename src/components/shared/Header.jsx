@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo2.png";
 
-const Header = () => {
+const Header = (props) => {
   return (
-    <div className="navbar text-white px-[10%] py-5">
+    <div className={`navbar  px-[10%] py-5 p ${props.color}`}>
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -54,10 +54,10 @@ const Header = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>News</a>
+            <Link to={"/"}>Home</Link>
           </li>
           <li>
-            <a>Destination</a>
+            <Link to={"/"}>Booking</Link>
           </li>
 
           <li>

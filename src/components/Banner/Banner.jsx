@@ -12,13 +12,14 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { FreeMode, Pagination } from "swiper";
 import "./styles.css";
 
 // import required modules
 
 const Banner = () => {
+  const placeName = useLoaderData();
   return (
     <div>
       <div className="grid grid-cols-12 pl-[10%] items-center mt-10">

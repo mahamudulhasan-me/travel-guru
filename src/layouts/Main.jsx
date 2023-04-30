@@ -1,6 +1,6 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import banner from "../assets/Banner.png";
-import Banner from "../components/Banner/Banner";
 import Header from "../components/shared/Header";
 const Main = () => {
   return (
@@ -8,8 +8,8 @@ const Main = () => {
       style={{ backgroundImage: `url(${banner})` }}
       className="bg-slate-800 bg-blend-overlay bg-right-top bg-no-repeat bg-cover h-screen"
     >
-      <Header />
-      <Banner />
+      <Header color="text-white" />
+      <Outlet />
     </div>
   );
 };

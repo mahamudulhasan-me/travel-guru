@@ -1,11 +1,33 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import facebook from "../../assets/icons/facebook.png";
 import google from "../../assets/icons/google.png";
+import { AuthContext } from "../../provider/AuthProvider";
 const LoginForm = () => {
+  const [error, setError] = useState("");
+  const { userSignInWithEmailAndPassword } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  // handle user sing in
+  const handleSignIn = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    userSignInWithEmailAndPassword(email, password)
+      .then((userCredentials) => {
+        navigate("/");
+      })
+      .catch((error) => setError(error.message));
+  };
   return (
     <div className=" w-2/5 mx-auto flex justify-center items-center  flex-col my-10">
-      <form className="w-full border py-8 px-10 space-y-5 text-black ">
+      <form
+        onSubmit={handleSignIn}
+        className="w-full border py-8 px-10 space-y-5 text-black "
+      >
         <p className="text-xl font-semibold">Login</p>
         <input
           type="email"

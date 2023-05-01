@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
@@ -25,6 +26,10 @@ const AuthProvider = ({ children }) => {
       });
     return updateUserName;
   };
+  // login with email and password
+  const userSignInWithEmailAndPassword = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
   //   check if user login or not
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -32,7 +37,12 @@ const AuthProvider = ({ children }) => {
     });
     return () => unsubscribe;
   }, []);
-  const authInfo = { user, createNewUser, updateUserInfo };
+  const authInfo = {
+    user,
+    createNewUser,
+    updateUserInfo,
+    userSignInWithEmailAndPassword,
+  };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

@@ -22,7 +22,7 @@ const BannerWithSlider = () => {
           >
             {placeName.map((place) => (
               <>
-                <div className="pl-1">
+                <div className="pl-1" key={place.id}>
                   <h1 className="text-5xl font-semibold uppercase">
                     {place.name}
                   </h1>
@@ -60,7 +60,7 @@ const BannerWithSlider = () => {
           >
             {placeName.map((place) => (
               <>
-                <div className="relative rounded-lg h-80 mx-3">
+                <div className="relative rounded-lg h-80 mx-3" key={place.id}>
                   <Link to={`/booking/${place.id}`}>
                     <img
                       src={place.image}

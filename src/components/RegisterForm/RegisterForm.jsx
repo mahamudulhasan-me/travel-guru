@@ -1,30 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import facebook from "../../assets/icons/facebook.png";
 import google from "../../assets/icons/google.png";
 const RegisterForm = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passError, setPassError] = useState("");
+
+  const getEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const getPassword = (e) => {
+    setPassError("");
+    const password = e.target.value;
+    setPassword(password);
+    if (!/(?=.*?[A-Z])/.test(password)) {
+      setPassError("At least one upper case");
+    } else if (!/(?=.*?[a-z])/.test(password)) {
+      setPassError("At least one lower case");
+    } else if (!/(?=.*?[0-9])/.test(password)) {
+      setPassError("At least one digit");
+    } else if (!/(?=.*?[#?!@$%^&*-])/.test(password)) {
+      setPassError("At least one special character");
+    } else if (password.length < 8) {
+      setPassError("Minimum password length is 8 characters");
+    }
+  };
+  const getConfirmPassword = (e) => {
+    setPassError("");
+    const confirmPassword = e.target.value;
+    setConfirmPassword(confirmPassword);
+    if (password !== confirmPassword) {
+      setPassError("password not match");
+    }
+  };
+  console.log({ email, password, confirmPassword });
+  const registerUser = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const fullName = `${form.firstName.value} ${form.lastName.value}`;
+    console.log(fullName);
+  };
   return (
     <div className=" w-2/5 mx-auto flex justify-center items-center  flex-col my-10">
-      <form className="w-full border py-8 px-10 space-y-3 text-black ">
+      <form
+        onSubmit={registerUser}
+        className="w-full border py-8 px-10 space-y-4 text-black "
+      >
         <p className="text-xl font-semibold">Create an account</p>
+
         <input
           type="text"
           name="firstName"
-          id=""
           placeholder="First Name"
           className="formInput"
         />
         <input
           type="text"
           name="lastName"
-          id=""
           placeholder="Last Name"
           className="formInput"
         />
+
         <input
           type="email"
           name="email"
-          id=""
+          value={email}
+          onChange={getEmail}
           placeholder="username or email"
           className="formInput"
         />
@@ -32,27 +76,31 @@ const RegisterForm = () => {
         <input
           type="password"
           name="password"
-          id=""
+          value={password}
+          onChange={getPassword}
           placeholder="password"
           className="formInput"
         />
         <input
           type="password"
           name="confirmPassword"
-          id=""
+          value={confirmPassword}
+          onChange={getConfirmPassword}
           placeholder="confirm password"
           className="formInput"
         />
+        <p className="text-rose-500">{passError}</p>
+        <div className="flex gap-2">
+          <input type="checkbox" name="" id="" />
+          <p>Show Password</p>
+        </div>
 
         <input
           type="submit"
           value="Login"
           className="text-center w-full font-semibold py-3  bg-primary"
         />
-        <div className="flex gap-2">
-          <input type="checkbox" name="" id="" />
-          <p>Show Password</p>
-        </div>
+
         <p className="text-center">
           Already have an account?{" "}
           <Link className="text-primary" to={"/user/login"}>

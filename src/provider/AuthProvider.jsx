@@ -8,7 +8,7 @@ import {
 import React, { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
 
-export const AuthContext = createContext();
+export const AuthContext = createContext("");
 const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
   //   update profile
-  const updateUserInfo = (name) => {
+  const updateUserInfo = (user, name) => {
     const updateUserName = updateProfile(user, { displayName: name })
       .then(() => {})
       .catch((err) => {

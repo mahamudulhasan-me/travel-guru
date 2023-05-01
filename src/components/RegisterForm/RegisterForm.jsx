@@ -1,13 +1,16 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import facebook from "../../assets/icons/facebook.png";
 import google from "../../assets/icons/google.png";
+import { AuthContext } from "../../provider/AuthProvider";
+
 const RegisterForm = () => {
-  const [name, setName] = useState("");
+  const { createNewUser, updateUserInfo } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passError, setPassError] = useState("");
+  const navigate = useNavigate();
 
   const getEmail = (e) => {
     setEmail(e.target.value);
@@ -36,12 +39,18 @@ const RegisterForm = () => {
       setPassError("password not match");
     }
   };
-  console.log({ email, password, confirmPassword });
+
   const registerUser = (e) => {
     e.preventDefault();
     const form = e.target;
     const fullName = `${form.firstName.value} ${form.lastName.value}`;
-    console.log(fullName);
+    createNewUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        updateUserInfo(user, fullName);
+        navigate("/");
+      })
+      .catch((error) => setPassError(error.message));
   };
   return (
     <div className=" w-2/5 mx-auto flex justify-center items-center  flex-col my-10">
@@ -104,7 +113,7 @@ const RegisterForm = () => {
         <p className="text-center">
           Already have an account?{" "}
           <Link className="text-primary" to={"/user/login"}>
-            Login
+            SignUp
           </Link>
         </p>
       </form>

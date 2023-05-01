@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import facebook from "../../assets/icons/facebook.png";
 import google from "../../assets/icons/google.png";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -7,7 +7,8 @@ const LoginForm = () => {
   const [error, setError] = useState("");
   const { userSignInWithEmailAndPassword } = useContext(AuthContext);
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const path = location.state.redirectPath || "/";
   // handle user sing in
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -18,7 +19,7 @@ const LoginForm = () => {
 
     userSignInWithEmailAndPassword(email, password)
       .then((userCredentials) => {
-        navigate("/");
+        navigate(path);
       })
       .catch((error) => setError(error.message));
   };
@@ -51,6 +52,9 @@ const LoginForm = () => {
           </div>
           <Link className="text-primary">Forgat Password?</Link>
         </div>
+        <p className="text-rose-500 font-semibold">
+          {error.includes("Firebase") ? error.slice(9) : error}
+        </p>
         <input
           type="submit"
           value="Login"

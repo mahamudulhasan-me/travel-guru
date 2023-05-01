@@ -3,8 +3,10 @@ import BannerWithSlider from "../components/Banner/BannerWithSlider";
 import Booking from "../components/Booking/Booking";
 import LoginForm from "../components/LoginForm/LoginForm";
 import RegisterForm from "../components/RegisterForm/RegisterForm";
+import HotelRooms from "../layouts/HotelRooms";
 import Login from "../layouts/Login";
 import Main from "../layouts/Main";
+import ProtectedRoute from "../protectedRoute/ProtectedRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,10 +22,14 @@ const router = createBrowserRouter([
       },
       {
         path: "booking/:id",
-        element: <Booking />,
+        element: (
+          <ProtectedRoute>
+            <Booking />
+          </ProtectedRoute>
+        ),
         loader: ({ params }) =>
           fetch(
-            `https://travel-guru-server-mahamudulhasan-me.vercel.app/${params.id}`
+            `https://travel-guru-server-mahamudulhasan-me.vercel.app/booking/${params.id}`
           ),
       },
     ],
@@ -41,6 +47,12 @@ const router = createBrowserRouter([
         element: <RegisterForm />,
       },
     ],
+  },
+  {
+    path: "hotel",
+    element: <HotelRooms />,
+    loader: () =>
+      fetch(`https://travel-guru-server-mahamudulhasan-me.vercel.app/hotel`),
   },
 ]);
 

@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 
 const Booking = () => {
   const bookingPlace = useLoaderData();
+  console.log(bookingPlace);
   return (
     <div className="grid grid-cols-12 justify-center  my-14 px-[15%]">
       <div className="col-span-7 mr-10">

@@ -4,7 +4,12 @@ import logo from "../../assets/logo2.png";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Header = (props) => {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logout()
+      .then(() => {})
+      .catch((err) => {});
+  };
   return (
     <div className={`navbar  px-[10%] py-5 p ${props.color}`}>
       <div className="navbar-start">
@@ -30,14 +35,14 @@ const Header = (props) => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>News</a>
+              <Link to={"/"}>Home</Link>
             </li>
             <li>
-              <a>Destination</a>
+              <Link to={"/"}>Booking</Link>
             </li>
 
             <li>
-              <a>Blog</a>
+              <Link to={"/hotel"}>Hotel</Link>
             </li>
             <li>
               <a>Contact</a>
@@ -63,7 +68,7 @@ const Header = (props) => {
           </li>
 
           <li>
-            <a>Blog</a>
+            <Link to={"/hotel"}>Hotel</Link>
           </li>
           <li>
             <a>Contact</a>
@@ -74,7 +79,10 @@ const Header = (props) => {
         {user ? (
           <>
             <p className="font-semibold">{user.displayName}</p>
-            <button className=" bg-primary w-28 py-3 ml-2 rounded-md text-center font-medium ">
+            <button
+              onClick={handleLogOut}
+              className=" bg-primary w-28 py-3 ml-2 rounded-md text-center font-medium "
+            >
               LogOut
             </button>
           </>

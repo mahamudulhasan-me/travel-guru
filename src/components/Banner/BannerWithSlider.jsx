@@ -11,13 +11,6 @@ const BannerWithSlider = () => {
   const [nav2, setNav2] = useState(null);
   const [showMore, setShowMore] = useState(false);
   const placeName = useLoaderData();
-  //   const [placeName, setPlaceName] = useState([]);
-  //   useEffect(() => {
-  //     fetch(`http://localhost:5000/place`)
-  //       .then((response) => response.json())
-  //       .catch((place) => console.log(place));
-  //   }, []);
-
   return (
     <div>
       <div className="grid grid-cols-12 items-center  mt-14 pl-[10%] gap-5 text-white">

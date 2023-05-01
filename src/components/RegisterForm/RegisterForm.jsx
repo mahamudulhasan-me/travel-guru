@@ -10,6 +10,7 @@ const RegisterForm = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passError, setPassError] = useState("");
+  const [showPass, setShowPass] = useState(true);
   const navigate = useNavigate();
 
   const getEmail = (e) => {
@@ -83,7 +84,7 @@ const RegisterForm = () => {
         />
         <br />
         <input
-          type="password"
+          type={`${showPass ? "password" : "text"}`}
           name="password"
           value={password}
           onChange={getPassword}
@@ -100,20 +101,25 @@ const RegisterForm = () => {
         />
         <p className="text-rose-500">{passError}</p>
         <div className="flex gap-2">
-          <input type="checkbox" name="" id="" />
-          <p>Show Password</p>
+          <input
+            type="checkbox"
+            name=""
+            id=""
+            onChange={() => setShowPass(!showPass)}
+          />
+          <p>{showPass ? "Show Password" : "Hide Password"}</p>
         </div>
 
         <input
           type="submit"
-          value="Login"
+          value="SignUp"
           className="text-center w-full font-semibold py-3  bg-primary"
         />
 
         <p className="text-center">
           Already have an account?{" "}
           <Link className="text-primary" to={"/user/login"}>
-            SignUp
+            Login
           </Link>
         </p>
       </form>
